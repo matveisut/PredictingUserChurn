@@ -1,0 +1,9 @@
+data:
+  path: "data/raw/raw_data.csv"
+  target: "Churn"
+# model:
+#   type: "RandomForest"
+#   params:
+#     n_estimators: 100
+#     max_depth: 5
+     

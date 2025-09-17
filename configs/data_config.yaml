@@ -1,5 +1,5 @@
 data:
-  path: "data/raw/raw_data.csv"
+  path: "../data/raw/raw_data.csv"
   target: "Churn"
 # model:
 #   type: "RandomForest"

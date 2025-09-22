@@ -58,7 +58,6 @@ def main(model_config):
     
     model = models_dict[model_type]
 
-    print(len(model_parametrs))
     model.set_params(**model_parametrs)
     load_dotenv()  
 
@@ -84,8 +83,9 @@ def main(model_config):
     X_train[scale_columns] = scaler.fit_transform(X_train[scale_columns])
     X_test[scale_columns] = scaler.transform(X_test[scale_columns])
         
-    train_and_log('logreg', model, X_train, y_train, X_test, y_test)
+    train_and_log(model_type, model, X_train, y_train, X_test, y_test)
 
 if __name__ == "__main__":
 
     main()
+    

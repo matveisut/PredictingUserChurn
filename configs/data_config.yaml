@@ -1,7 +1,7 @@
 data:
-  raw_path: "C:/Users/user/Desktop/Projects/Mentors/PredictingUserChurn/data/raw/raw_data.csv"
-  processed_path: "C:/Users/user/Desktop/Projects/Mentors/PredictingUserChurn/data/processed/processed_dataset.csv"
-  processed_path_processed_path_without_unimportant: "C:/Users/user/Desktop/Projects/Mentors/PredictingUserChurn/data/processed/processed_dataset_1.csv"
-  target: "Churn"
+  raw_path: "C:/Users/user/Desktop/Projects/Mentors/PredictingUserChurn/data/raw/raw_data.csv"      #raw_data from  https://www.kaggle.com/competitions/advanced-dls-spring-2021
+  processed_path: "C:/Users/user/Desktop/Projects/Mentors/PredictingUserChurn/data/processed/processed_dataset.csv" # processed data was get in notebooks/main.ipynb
+  processed_path_processed_path_without_unimportant: "C:/Users/user/Desktop/Projects/Mentors/PredictingUserChurn/data/processed/processed_dataset_1.csv" # processed data was get in notebooks/experiments.ipynb
+  target: "Churn" 
 seed: '42'
 

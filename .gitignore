@@ -213,3 +213,6 @@ data/*
 
 logs/
 data/
+
+notebooks/wandb/
+wandb/

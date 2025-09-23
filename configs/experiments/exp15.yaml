@@ -1,0 +1,13 @@
+model_type: LogisticRegression
+parameters:
+  C: 2
+  dual: false
+  fit_intercept: true
+  intercept_scaling: 1
+  max_iter: 100
+  multi_class: deprecated
+  penalty: l2
+  solver: lbfgs
+  tol: 0.0001
+  verbose: 0
+  warm_start: false

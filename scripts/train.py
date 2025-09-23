@@ -54,6 +54,7 @@ def train_and_log(name, model, X_train, y_train, X_test, y_test, save_dir = '.\c
     
     Также добавляет параметры модели в yaml файл 
     
+    Сохраняет эксперимент в save_dir
     """
     print("=" * 50, "model: ", name ,"=" * 50)
     

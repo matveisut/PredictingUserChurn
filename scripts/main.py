@@ -41,8 +41,8 @@ def main(model_config):
     df = pd.read_csv(path)
     df.drop(['Unnamed: 0'], axis = 1, inplace= True)
     
-    logreg = LogisticRegression(max_iter = 150)
-    tree = DecisionTreeClassifier(max_depth = 5)
+    logreg = LogisticRegression()
+    tree = DecisionTreeClassifier()
     rf = RandomForestClassifier()
     grad_boosting = GradientBoostingClassifier()
     knn = KNeighborsClassifier()
@@ -51,16 +51,17 @@ def main(model_config):
     catboost = CatBoostClassifier()
 
 
+    # Выбор и настройка модели
     models = [logreg, tree, rf, grad_boosting, knn, lgbm, xgb, catboost ]
     names = [model.__class__.__name__ for model in models]
-
     models_dict = dict(zip(names, models))
-    
     model = models_dict[model_type]
 
+    
     model.set_params(**model_parametrs)
+    
+    # Вход в Wandb
     load_dotenv()  
-
     api_key = os.getenv('WANDB_API_KEY')
     if api_key:
         wandb.login(key=api_key)

@@ -32,19 +32,14 @@ pip install -r requirements.txt
 ### Запуск проекта
 Перед тем как это запускать вам понадобятся предобработанные данные, которые появятся в data/processed после выполнения ноутбука main и experiments(для них нужны raw данные с kaggle)
 
+в yaml model config указываются настройки модели, которую будете тренировать. Возможные модели: LogisticRegression, DecisionTreeClassifier, RandomForestClassifier, GradientBoostingClassifier, KNeighborsClassifier, LGBMClassifier, XGBClassifier, CatBoostClassifier
+
 Вы можете запустить обучение модели с использованием файла конфигурации, выполнив следующую команду:
 
 ```bash
 python scripts/main.py --model_config configs/model_config.yaml
 ```
 
-Чтобы запустить эксперименты, используйте:
-
-```bash
-run experiments
-```
-
-*(Примечание: Уточните эту команду, если она требует дополнительных аргументов или утилиты).*
 
 ## Лицензия
 

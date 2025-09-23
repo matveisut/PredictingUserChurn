@@ -45,7 +45,7 @@ def log_wandb_sklearn(model, X_train, y_train, X_test, y_test, data_info = None,
 
     # [optional] finish the wandb run, necessary in notebooks
     
-def train_and_log(name, model, X_train, y_train, X_test, y_test, reports = None, roc_aucs = None):
+def train_and_log(name, model, X_train, y_train, X_test, y_test, save_dir = '.\configs\experiments', reports = None, roc_aucs = None):
     """
     
     принимает на вход модель, имя конфигурации, данные и два словаря, в которые будут добавлены 
@@ -75,12 +75,14 @@ def train_and_log(name, model, X_train, y_train, X_test, y_test, reports = None,
     print('roc_auc =', roc_auc_scor)
 
     log_wandb_sklearn(model, X_train, y_train, X_test, y_test)
+    
+    quick_save_model(model, save_dir= save_dir)
 
 
 
 
 
-def quick_save_model(model, feature_names=None, metrics=None,  save_dir= '..\configs\experiments'):
+def quick_save_model(model, feature_names=None, metrics=None,  save_dir= '.\configs\experiments'):
     """Сохранение с очисткой данных"""
     os.makedirs(save_dir, exist_ok=True)
     
@@ -110,7 +112,6 @@ def quick_save_model(model, feature_names=None, metrics=None,  save_dir= '..\con
     
     # Подготовка данных с очисткой
     data = {
-        'experiment_name': exp_name,
         'model_type': model.__class__.__name__,
         'parameters': clean_data({k: v for k, v in model.get_params().items() if v is not None})
     }
@@ -121,9 +122,7 @@ def quick_save_model(model, feature_names=None, metrics=None,  save_dir= '..\con
             data['feature_names'] = clean_data(feature_names.tolist())
         else:
             data['feature_names'] = clean_data(list(feature_names))
-    
-    if hasattr(model, 'n_features_in_'):
-        data['n_features'] = clean_data(model.n_features_in_)
+
     
     if metrics is not None:
         data['metrics'] = clean_data(metrics)
@@ -134,18 +133,3 @@ def quick_save_model(model, feature_names=None, metrics=None,  save_dir= '..\con
     
     print(f"✅ Эксперимент сохранен: {filename}")
     return exp_name
-
-def quick_load_model(exp_name,  save_dir= '..\configs\experiments'):
-    """Загружает данные эксперимента"""
-    filename = os.path.join(save_dir, f"{exp_name}.yaml")
-    
-    if not os.path.exists(filename):
-        available = [f.replace('.yaml', '') for f in os.listdir(save_dir) 
-                    if f.startswith('exp') and f.endswith('.yaml')]
-        raise FileNotFoundError(f"Эксперимент {exp_name} не найден. Доступные: {available}")
-    
-
-    with open(filename, 'r', encoding='utf-8') as f:
-        experiment_data = yaml.safe_load(f)
-    
-    return experiment_data

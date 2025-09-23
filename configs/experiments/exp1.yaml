@@ -1,0 +1,15 @@
+experiment_name: exp1
+model_type: LogisticRegression
+n_features: 16
+parameters:
+  C: 1.0
+  dual: false
+  fit_intercept: true
+  intercept_scaling: 1
+  max_iter: 100
+  multi_class: deprecated
+  penalty: l2
+  solver: lbfgs
+  tol: 0.0001
+  verbose: 0
+  warm_start: false
